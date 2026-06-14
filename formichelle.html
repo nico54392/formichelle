@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Michelle ❤️</title>
+<style>
+body{font-family:Georgia,serif;background:#fff8fb;color:#333;max-width:1000px;margin:auto;padding:20px}
+h1,h2{color:#c24a7a}
+.card{background:white;padding:20px;margin:20px 0;border-radius:16px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.locked{opacity:.55}
+.badge{display:inline-block;margin:4px;padding:8px 12px;border-radius:999px;background:#f3d7e4}
+.photo{height:250px;border:2px dashed #ccc;display:flex;align-items:center;justify-content:center}
+button{padding:10px 16px;border:none;border-radius:10px;cursor:pointer}
+#countdown{font-size:1.2em}
+</style>
+</head>
+<body>
+<h1>❤️ Michelle & Nico ❤️</h1>
+<p>A journey that unfolds one chapter at a time.</p>
+<div class="card">
+<h2>Collectibles</h2>
+<div>⭐ 🌙 ☀️ 🌹 ❄️ 🧭 ❤️ ✈️ 🎵 📷 🏆</div>
+</div>
+
+<div class="card">
+<h2>Next Unlock</h2>
+<div id="countdown"></div>
+</div>
+
+<div id="months"></div>
+
+<script>
+const months=[
+["2026-08-17","August","⭐","Trivia Game"],
+["2026-09-17","September","🌙","Memory Match"],
+["2026-10-17","October","☀️","Scavenger Hunt"],
+["2026-11-17","November","🌹","Timeline Sort"],
+["2026-12-17","December","❄️","Hidden Objects"],
+["2027-01-17","January","🧭","Choose Your Adventure"],
+["2027-02-17","February","❤️","Escape Room"],
+["2027-03-17","March","✈️","Dream Day Builder"],
+["2027-04-17","April","🎵","Spot the Difference"],
+["2027-05-17","May","📷","Guess the Memory"],
+["2027-06-17","June","🏆","Grand Finale"]
+];
+
+const now=new Date();
+const container=document.getElementById("months");
+
+months.forEach((m,i)=>{
+ const unlock=new Date(m[0]+"T00:00:00");
+ const unlocked=now>=unlock;
+
+ const div=document.createElement("div");
+ div.className="card "+(unlocked?"":"locked");
+
+ div.innerHTML=`
+ <h2>${m[2]} ${m[1]} Chapter ${i+1}</h2>
+ <p><strong>Status:</strong> ${unlocked?"Unlocked":"Locked until "+m[0]}</p>
+
+ <h3>💌 Letter from Nico</h3>
+ <p>[WRITE YOUR LETTER HERE]</p>
+
+ <h3>📸 Memory of the Month</h3>
+ <div class="photo">Insert your photo here</div>
+ <p>[WRITE WHY THIS MEMORY MEANS SO MUCH TO YOU]</p>
+
+ <h3>🎮 ${m[3]}</h3>
+ <div id="game${i}">${gameHTML(i)}</div>
+ `;
+ container.appendChild(div);
+});
+
+function gameHTML(i){
+switch(i){
+case 0:return '<button onclick="alert(`Trivia placeholder`)">Start Trivia</button>';
+case 1:return '<button onclick="alert(`Memory Match placeholder`)">Play</button>';
+case 2:return '<button onclick="alert(`Scavenger Hunt placeholder`)">Begin Hunt</button>';
+case 3:return '<button onclick="alert(`Timeline Sort placeholder`)">Sort Timeline</button>';
+case 4:return '<button onclick="alert(`Hidden Objects placeholder`)">Search</button>';
+case 5:return '<button onclick="alert(`Adventure placeholder`)">Choose Path</button>';
+case 6:return '<button onclick="alert(`Escape Room placeholder`)">Enter</button>';
+case 7:return '<button onclick="alert(`Dream Day Builder placeholder`)">Build</button>';
+case 8:return '<button onclick="alert(`Spot the Difference placeholder`)">Find</button>';
+case 9:return '<button onclick="alert(`Guess the Memory placeholder`)">Guess</button>';
+case 10:return '<button onclick="document.getElementById(`capsule`).style.display=`block`">Open Finale</button><div id="capsule" style="display:none;margin-top:15px"><h4>Time Capsule</h4><p>Your final letter, slideshow, and video go here.</p></div>';
+}
+}
+
+const future=months.map(x=>new Date(x[0]+"T00:00:00")).find(d=>d>now);
+function updateCountdown(){
+ if(!future){document.getElementById("countdown").innerText="All chapters unlocked ❤️";return;}
+ const diff=future-now;
+ const days=Math.floor(diff/86400000);
+ const hrs=Math.floor((diff%86400000)/3600000);
+ const mins=Math.floor((diff%3600000)/60000);
+ document.getElementById("countdown").innerText=`${days} days, ${hrs} hours, ${mins} minutes`;
+}
+updateCountdown();
+</script>
+</body>
+</html>
