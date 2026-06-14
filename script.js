@@ -9,8 +9,8 @@ const apps = {
   "Game 1": () => {
     return `
       <p>Question: 2 + 2 = ?</p>
-      <button onclick="alert('Correcto ✔')">4</button>
-      <button onclick="alert('Incorrecto ✖')">5</button>
+      <button onclick="alert('Correct ✔')">4</button>
+      <button onclick="alert('Incorrect ✖')">5</button>
     `;
   },
 
