@@ -1,0 +1,129 @@
+:root {
+  --bg: #2b2118;        /* deep brown background */
+  --window: #c9b79c;    /* beige panel */
+  --accent: #6b4f3a;    /* warm brown border */
+  --text: #1f1610;      /* dark text */
+  --muted: #3a2b22;
+  --shadow: #1a130e;
+}
+
+/* GLOBAL */
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: "Courier New", monospace;
+  color: var(--text);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* DESKTOP GRID */
+#desktop {
+  display: grid;
+  grid-template-columns: repeat(6, 120px);
+  grid-auto-rows: 120px;
+  gap: 20px;
+  padding: 30px;
+  align-content: start;
+}
+
+/* ICONS */
+.icon {
+  width: 100px;
+  height: 100px;
+  background: var(--window);
+  border: 2px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text);
+  transition: transform 0.1s ease, background 0.1s ease;
+  box-shadow: 3px 3px 0 var(--shadow);
+}
+
+.icon:hover {
+  transform: scale(1.05);
+  background: #d6c7af;
+}
+
+/* WINDOW */
+#window {
+  position: absolute;
+  top: 80px;
+  right: 80px;
+  width: 420px;
+  height: 320px;
+  background: var(--window);
+  border: 2px solid var(--accent);
+  display: none;
+  flex-direction: column;
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+
+/* TITLE BAR */
+#titlebar {
+  height: 32px;
+  background: var(--accent);
+  color: var(--window);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+  cursor: move;
+  font-size: 12px;
+  user-select: none;
+}
+
+/* CLOSE BUTTON */
+#close {
+  cursor: pointer;
+  color: var(--window);
+  font-weight: bold;
+}
+
+/* CONTENT AREA */
+#content {
+  flex: 1;
+  padding: 12px;
+  font-size: 13px;
+  color: var(--text);
+  overflow: auto;
+}
+
+/* BUTTONS */
+button {
+  background: var(--accent);
+  color: var(--window);
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+  font-family: inherit;
+  margin-top: 10px;
+  box-shadow: 2px 2px 0 var(--shadow);
+}
+
+button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--shadow);
+}
+
+/* TEXTAREA */
+textarea {
+  width: 100%;
+  height: 200px;
+  background: #f2e6d5;
+  border: 1px solid var(--accent);
+  color: var(--text);
+  font-family: inherit;
+  padding: 8px;
+  resize: none;
+}
+
+/* OPTIONAL: subtle CRT / pixel feel */
+* {
+  image-rendering: pixelated;
+}
