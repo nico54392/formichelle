@@ -7,11 +7,11 @@
 
   <style>
     :root{
-      --bg: #1e1e2a;
-      --window: #2b2b3c;
-      --accent: #8fbcd4;
-      --text: #e6e6e6;
-      --muted: #a0a0b2;
+      --bg: #2b2118;        /* deep brown */
+      --window: #c9b79c;    /* beige */
+      --accent: #6b4f3a;    /* warm brown */
+      --text: #1f1610;      /* dark espresso */
+      --muted: #3a2b22;
     }
 
     body {
@@ -48,11 +48,12 @@
       text-align: center;
       font-size: 12px;
       transition: transform 0.1s;
+      color: var(--text);
     }
 
     .icon:hover {
       transform: scale(1.05);
-      background: #35354a;
+      background: #d6c7af;
     }
 
     /* Window system */
@@ -60,17 +61,19 @@
       position: absolute;
       top: 80px;
       right: 80px;
-      width: 400px;
-      height: 300px;
+      width: 420px;
+      height: 320px;
       background: var(--window);
       border: 2px solid var(--accent);
       display: none;
       flex-direction: column;
+      box-shadow: 6px 6px 0px #1a130e;
     }
 
     #titlebar {
-      height: 30px;
-      background: #20202c;
+      height: 32px;
+      background: var(--accent);
+      color: var(--window);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -81,24 +84,35 @@
 
     #close {
       cursor: pointer;
-      color: var(--accent);
+      color: var(--window);
+      font-weight: bold;
     }
 
     #content {
       flex: 1;
-      padding: 10px;
+      padding: 12px;
       font-size: 13px;
-      color: var(--muted);
+      color: var(--text);
       overflow: auto;
     }
 
     button {
       background: var(--accent);
+      color: var(--window);
       border: none;
       padding: 6px 10px;
       cursor: pointer;
       font-family: inherit;
       margin-top: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 200px;
+      background: #f2e6d5;
+      border: 1px solid var(--accent);
+      color: var(--text);
+      font-family: inherit;
     }
   </style>
 </head>
@@ -131,24 +145,22 @@
 
       if(name === "Game 1"){
         content.innerHTML = `
-          <p>Simple text game placeholder.</p>
-          <button onclick="alert('Correcto ✔')">Submit</button>
+          <p>Question: 2 + 2 = ?</p>
+          <button onclick="alert('Correcto ✔')">4</button>
+          <button onclick="alert('Incorrecto ✖')">5</button>
         `;
       }
       else if(name === "Game 2"){
         content.innerHTML = `
-          <p>Another blank game slot.</p>
-          <button onclick="alert('Incorrecto ✖')">Try</button>
+          <p>Placeholder game slot.</p>
+          <button onclick="alert('Try again')">Try</button>
         `;
       }
       else if(name === "Notes"){
-        content.innerHTML = `<textarea style="width:100%;height:200px;"></textarea>`;
+        content.innerHTML = `<textarea placeholder="write something..."></textarea>`;
       }
       else if(name === "Terminal"){
-        content.innerHTML = `<p>$ system ready_</p>`;
-      }
-      else {
-        content.innerHTML = `<p>Empty app.</p>`;
+        content.innerHTML = `<p>$ beige-shell v0.1</p>`;
       }
     }
 
@@ -156,7 +168,7 @@
       win.style.display = "none";
     }
 
-    // minimal drag
+    // drag
     let isDragging = false;
     let offsetX, offsetY;
 
