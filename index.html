@@ -1,26 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="style.css">
-</head>
+<div id="timeline">
 
-<body>
-
-  <div id="desktop">
-    <div class="icon" onclick="openApp('Game 1')">Game 1</div>
-    <div class="icon" onclick="openApp('Game 2')">Game 2</div>
-    <div class="icon" onclick="openApp('Notes')">Notes</div>
-    <div class="icon" onclick="openApp('Terminal')">Terminal</div>
-  </div>
-
-  <div id="window">
-    <div id="titlebar">
-      <span id="title">App</span>
-      <span id="close" onclick="closeWindow()">✕</span>
+  <!-- MONTH 1 -->
+  <section class="month">
+    <div class="month-header">
+      <h2>Month 1 — Awakening</h2>
+      <p>Welcome. Your system begins here.</p>
     </div>
-    <div id="content"></div>
-  </div>
 
-  <script src="script.js"></script>
-</body>
-</html>
+    <div class="month-body">
+      
+      <!-- LEFT: MEMORY -->
+      <div class="memory">
+        <h3>Memory Log</h3>
+        <ul>
+          <li>System initialized</li>
+          <li>First interaction recorded</li>
+        </ul>
+      </div>
+
+      <!-- RIGHT: GAMES -->
+      <div class="games">
+        <h3>Modules</h3>
+
+        <div class="icon" onclick="openApp('Game 1')">Game 1</div>
+        <div class="icon" onclick="openApp('Game 2')">Game 2</div>
+        <div class="icon" onclick="openApp('Game 3')">Game 3</div>
+        <div class="icon" onclick="openApp('Game 4')">Game 4</div>
+
+      </div>
+
+    </div>
+  </section>
+
+</div>
