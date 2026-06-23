@@ -3,120 +3,455 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Timeline OS</title>
+  <title>Formichelle Timeline OS</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
+<div id="system-bar">
+    <div>
+      Current Date: <span id="system-date">loading...</span>
+    </div>
+  
+    <div id="progress-container">
+      <span id="progress-text">0 / 12 Months Complete</span>
+  
+      <div id="progress-bar">
+        <div id="progress-fill"></div>
+      </div>
+    </div>
+  </div>
+    
 <body>
+    <div id="gate">
+        <div id="gate-box">
+          <img id="gate-gif" src="images/lock.gif" alt="locking animation" />
+          <img id="thinking-gif" src="images/thinking.gif" alt="thinking animation" />
+          <img id="ily-gif" src="images/ily.gif" alt="ily animation" />
 
-<div id="timeline">
+          <h2>ACCESS REQUIRED</h2>
+          <p>Answer to proceed:</p>
+      
+          <p><strong>What song did you play for Nico on factime during christmas break freshman year?</strong></p>
+      
+          <input
+          id="gate-input"
+          placeholder="enter answer..."
+          onkeydown="if(event.key==='Enter') checkGate()"
+        />
+          <button onclick="checkGate()">Enter</button>
+      
+          <p id="gate-result"></p>
+      
+        </div>
+      </div>
 
+      <div id="intro-message" class="hidden">
+        <div id="boot-lines"></div>
+    </div>
+<!-- SIDE DECOR (optional images) -->
+<div class="decor-left"></div>
+<div class="decor-right"></div>
+
+
+<div id="main-content" class="hidden">
+  <div id="timeline">
 
   <!-- =========================
-       MONTH 1
+       MONTH TEMPLATE START
   ========================== -->
-  <section class="month">
+
+  <!-- MONTH 1 -->
+  <section class="month" data-unlock="2026-08-17">
 
     <div class="month-header">
-      <h2>Month 1 — Awakening</h2>
-      <p><strong>Captain:</strong> “You are now inside the system.”</p>
-      <p>Nothing is stable yet. Everything is forming.</p>
+      <h2>Month 1 — August</h2>
+      <p>Hey Lovey! I hope that you're excited to be reading this--I had so much fun putting this little website together for you! I hope it can</p>
     </div>
-
+  
     <div class="month-body">
-
-      <!-- MEMORY -->
+  
       <div class="memory">
-        <h3>Memory</h3>
-        <ul>
-          <li>System boot initiated</li>
-          <li>User detected in core layer</li>
-        </ul>
+        <h3>Monthly Memories</h3>
+  
+        <div class="photo-window">
+          <div class="photo-titlebar">AUG.JPG</div>
+          <img src="images/aug.jpg" class="memory-photo" alt="Month 1 collage">
+        </div>
       </div>
-
-      <!-- GAME -->
+  
       <div class="games">
-        <h3>Game</h3>
-        <div class="icon" onclick="openApp('Game 1')">Game 1</div>
+        <div class="icon" onclick="loadGame(this,'Game 1')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
       </div>
-
+  
     </div>
+  
+    <div class="lock-overlay">
+      🔒 Locked<br><small>Come back on <span class="date"></span></small>
+    </div>
+  
   </section>
 
 
-  <!-- =========================
-       MONTH 2 (LOCKED EXAMPLE)
-  ========================== -->
-  <section class="month locked" data-unlock="2026-07-01">
+
+  <!-- MONTH 2 -->
+  <section class="month" data-unlock="2026-09-17">
 
     <div class="month-header">
-      <h2>Month 2 — Drift</h2>
-      <p><strong>Captain:</strong> “Something is watching the system evolve.”</p>
-      <p>Signals are inconsistent.</p>
+      <h2>Month 2 — September</h2>
+      <p>“Blank fill challenge"</p>
     </div>
-
+  
     <div class="month-body">
-
-      <!-- MEMORY -->
+  
       <div class="memory">
-        <h3>Memory</h3>
-        <ul>
-          <li>Latency spikes recorded</li>
-          <li>Unknown process signature detected</li>
-        </ul>
+        <h3>Monthly Memories</h3>
+        <div class="photo-window">
+          <div class="photo-titlebar">SEPT.JPG</div>
+          <img src="images/sep.jpg" class="memory-photo">
+        </div>
       </div>
-
-      <!-- GAME -->
+  
       <div class="games">
-        <h3>Game</h3>
-        <div class="icon" onclick="openApp('Game 2')">Game 2</div>
+        <div class="icon" onclick="loadGame(this,'Game 2')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
       </div>
-
+  
     </div>
+  
+    <div class="lock-overlay">🔒 Locked<br><small>Come back on <span class="date"></span></small></div>
+  </section>
 
-    <!-- LOCK OVERLAY -->
+
+  <!-- MONTH 3 -->
+  <section class="month" data-unlock="2026-10-17">
+
+    <div class="month-header">
+      <h2>Month 3 — October</h2>
+      <p>“Multiple choice trial"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+        <div class="photo-window">
+          <div class="photo-titlebar">OCT.JPG</div>
+          <img src="images/oct.jpg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 3')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">🔒 Locked<br><small>Come back on <span class="date"></span></small></div>
+  </section>
+
+  <!-- MONTH 4 -->
+  <section class="month" data-unlock="2026-11-17">
+
+    <div class="month-header">
+      <h2>Month 4 — November</h2>
+      <p>“Picture memory"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+        <div class="photo-window">
+          <div class="photo-titlebar">NOV.JPG</div>
+          <img src="images/nov.jpg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 4')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">🔒 Locked<br><small>Come back on <span class="date"></span></small></div>
+  </section>
+
+
+  <!-- MONTH 5 -->
+  <section class="month" data-unlock="2026-12-17">
+
+    <div class="month-header">
+      <h2>Month 5 — December</h2>
+      <p>“Fill in the memory"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+        <div class="photo-window">
+          <div class="photo-titlebar">DEC.JPG</div>
+          <img src="images/dec.jpg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 5')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">🔒 Locked<br><small>Come back on <span class="date"></span></small></div>
+  </section>
+
+
+  <!-- MONTH 6 -->
+  <section class="month" data-unlock="2027-01-17">
+
+    <div class="month-header">
+      <h2>Month 6 — January</h2>
+      <p>“Choice under pressure"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+        <div class="photo-window">
+          <div class="photo-titlebar">JAN.JPG</div>
+          <img src="images/jan.jpg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 6')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">🔒 Locked<br><small>Come back on <span class="date"></span></small></div>
+  </section>
+
+
+  <!-- MONTH 7 -->
+  <section class="month" data-unlock="2027-02-17">
+    <div class="month-header">
+      <h2>Month 7 — February</h2>
+      <p>“Audio memory returns"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+        <div class="photo-window">
+          <div class="photo-titlebar">FEB.JPG</div>
+          <img src="images/feb.jpeg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 7')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">🔒 Locked<br><small>Come back on <span class="date"></span></small></div>
+  </section>
+
+
+  <!-- MONTH 8 -->
+  <section class="month" data-unlock="2027-03-17">
+    <div class="month-header">
+      <h2>Month 8 — March</h2>
+      <p>“Reconstruction"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+        <div class="photo-window">
+          <div class="photo-titlebar">MARCH.JPG</div>
+          <img src="images/mar.jpeg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 8')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">🔒 Locked<br><small>Come back on <span class="date"></span></small></div>
+  </section>
+
+
+  <!-- MONTH 9 -->
+  <section class="month" data-unlock="2027-04-17">
+
+    <div class="month-header">
+      <h2>Month 9 — April</h2>
+      <p>“Blank fill challenge"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+  
+        <div class="photo-window">
+          <div class="photo-titlebar">APRIL.JPG</div>
+          <img src="images/apr.jpeg" class="memory-photo" alt="Month 9 collage">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 9')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
     <div class="lock-overlay">
       🔒 Locked<br>
-      <small>Unlocks on <span class="date"></span></small>
+      <small>Come back on <span class="date"></span></small>
     </div>
-
+  
   </section>
 
-
-  <!-- =========================
-       MONTH 3
-  ========================== -->
-  <section class="month">
+  <!-- MONTH 10 -->
+  <section class="month" data-unlock="2027-05-17">
 
     <div class="month-header">
-      <h2>Month 3 — Fragmentation</h2>
-      <p><strong>Captain:</strong> “Memory is no longer passive.”</p>
-      <p>The system reacts to what you do.</p>
+      <h2>Month 10 — May</h2>
+      <p>“Multiple choice memory"</p>
     </div>
-
+  
     <div class="month-body">
-
-      <!-- MEMORY -->
+  
       <div class="memory">
-        <h3>Memory</h3>
-        <ul>
-          <li>Memory structures rewriting themselves</li>
-          <li>Game output affecting system state</li>
-        </ul>
+        <h3>Monthly Memories</h3>
+  
+        <div class="photo-window">
+          <div class="photo-titlebar">MAY.JPG</div>
+          <img src="images/may.jpeg" class="memory-photo" alt="Month 10 collage">
+        </div>
       </div>
-
-      <!-- GAME -->
+  
       <div class="games">
-        <h3>Game</h3>
-        <div class="icon" onclick="openApp('Game 3')">Game 3</div>
+        <div class="icon" onclick="loadGame(this,'Game 10')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
       </div>
-
+  
     </div>
+  
+    <div class="lock-overlay">
+      🔒 Locked<br>
+      <small>Come back on <span class="date"></span></small>
+    </div>
+  
   </section>
 
+  <!-- MONTH 11 -->
+<section class="month" data-unlock="2027-06-17">
 
-</div>
+    <div class="month-header">
+      <h2>Month 11 — June</h2>
+      <p>“Final reconstruction"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+  
+        <div class="photo-window">
+          <div class="photo-titlebar">JUNE.JPG</div>
+          <img src="images/jun.jpeg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 11')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">
+      🔒 Locked<br>
+      <small>Come back on <span class="date"></span></small>
+    </div>
+  
+  </section>
+  
+  
+  <!-- MONTH 12 -->
+  <section class="month" data-unlock="2027-07-17">
+  
+    <div class="month-header">
+      <h2>Month 12 — July</h2>
+      <p>“Residual signal"</p>
+    </div>
+  
+    <div class="month-body">
+  
+      <div class="memory">
+        <h3>Monthly Memories</h3>
+  
+        <div class="photo-window">
+          <div class="photo-titlebar">JULY.JPG</div>
+          <img src="images/jul.jpeg" class="memory-photo">
+        </div>
+      </div>
+  
+      <div class="games">
+        <div class="icon" onclick="loadGame(this,'Game 12')">
+          <h3>Launch Game</h3>
+        </div>
+        <div class="game-container"></div>
+      </div>
+  
+    </div>
+  
+    <div class="lock-overlay">
+      🔒 Locked<br>
+      <small>Come back on <span class="date"></span></small>
+    </div>
+  
+  </section>
+
 
 <!-- FLOATING WINDOW -->
 <div id="window">
@@ -127,7 +462,7 @@
   <div id="content"></div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js" defer></script>
 
 </body>
 </html>
